@@ -1,11 +1,21 @@
 {% extends "base.html" %}
-{% block title %}{{ article.title }}{% endblock %}
+{% block title %}{{ article.title|striptags }}{% endblock %}
+{% block meta_block %}
+{{ super() }}
+  <meta name="description" content="{{article.title|striptags}} written {{ article.date|strftime('%B %d, %Y') }}{% if article.tags %} in {% for tag in article.tags %}{{tag|lower}}{% if not loop.last %},{% endif %}{% endfor %}{% endif %}">
+  {% if article.keywords %}
+  <meta name="keywords" content="{{article.keywords}}" />
+  {% endif %}
+  {% if article.facebookimage %}
+  <meta property="og:image" content="{{ article.facebookimage }}"/>
+  {% endif %}
+{% endblock meta_block %}
 {% block content %}
 <article role="article" class="full-single-article">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <h1>{{ article.title }}</h1>
+        <h1>{{ article.title|striptags }}</h1>
         <div class="meta">
           written <time datetime="{{ article.date.isoformat()  }}">{{ article.date|strftime('%B %d, %Y') }}</time>
           {% if article.tags %}

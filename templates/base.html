@@ -8,11 +8,14 @@
   <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
   <meta name="author" content="{{ AUTHOR }}">
 
+  {% block meta_block %}
   <meta name="HandheldFriendly" content="True">
   <meta name="MobileOptimized" content="320">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  {% endblock meta_block %}
 
   <link rel="canonical" href="{% block canonical %}{{ SITEURL }}{% endblock canonical %}">
+  
   <link href="{{ SITEURL }}/favicon.png" rel="icon">
 
   {% if FEED_ALL_ATOM %}
