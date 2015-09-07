@@ -1,12 +1,20 @@
 {% extends "base.html" %}
+{% block title %}{{ SITENAME }} | {{ article.title }}{% endblock %}
 {% block content %}
 <article role="article" class="full-single-article">
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <h1>Article title</h1>
+        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><h1>{{ article.title }}</h1></a>
         <div class="meta">
-          written <time datetime="{{ article.date  }}"</time>
+          written <time datetime="{{ article.date.isoformat()  }}">{{ article.date|strftime('%B %d, %Y') }}</time>
+          {% if article.tags %}
+          in <span class="categories">
+          {% for tag in article.tags %}
+            <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag|lower }}</a>{% if not loop.last %},{% endif %}
+          {% endfor %}
+          </span>
+          {% endif %}
         </div>
         {{ article.content }}
         <hr class="divider-short"/>
