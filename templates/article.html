@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block content %}
+<article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Article title</h1>
+        <div class="meta">
+          written <time datetime="{{ article.date  }}"</time>
+        </div>
+        {{ article.content }}
+        <hr class="divider-short"/>
+        <!-- Disqus goes here -->
+        <section>
+          <h1>Comments</h1>
+          <div id="disqus_thread" aria-live="polite">Disqus goes here</div>
+        </section>
+      </div>
+    </div>
+  </div>
+</article>
+{% endblock content %}
