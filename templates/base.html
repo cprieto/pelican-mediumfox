@@ -44,6 +44,38 @@
     </a>
     {% block content %}
     {% endblock content %}
-    {% include "footer.html" %}
+    <footer id="footer" class="her-row">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-1">
+            <a href="/"><h4>Home</h4></a>
+          </div>
+
+          <div class="col-md-2">
+            <div class="social-icon-list">
+              {% if AUTHOR_TWITTER %}
+              <a href="https://twitter.com/{{ AUTHOR_TWITTER }}"><img src="{{ SITEURL }}/theme/images/glyphicons_social_31_twitter.png"/></a>
+              {% endif %}
+
+              {% if AUTHOR_GITHUB %}
+              <a href="https://github.com/{{ AUTHOR_GITHUB }}"><img src="{{ SITEURL }}/theme/images/glyphicons_social_21_github.png"/></a>
+              {% endif %}
+
+              {% if AUTHOR_LINKEDIN %}
+              <a href="https://linkedin.com/in/{{ AUTHOR_LINKEDIN }}"><img src="{{ SITEURL }}/theme/images/glyphicons_social_17_linked_in.png"/></a>
+              {% endif %}
+
+              {% if AUTHOR_EMAIL %}
+              <a href="mailto:{{ AUTHOR_EMAIL }}"><img src="{{ SITEURL }}/theme/images/glyphicons_social_39_e-mail.png"/></a>
+              {% endif %}
+            </div>
+          </div>
+          <div class="pull-right">
+            <h4>Powered by <a href="http://blog.getpelican.com/">Pelican</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.
+            Title picture by <a href="https://commons.wikimedia.org/wiki/File:Melbourne_Skyline_and_Princes_Bridge_-_Dec_2008.jpg#/media/File:Melbourne_Skyline_and_Princes_Bridge_-_Dec_2008.jpg">Diliff via Wikimedia Commons</a>.</h4>
+          </div>
+        </div>
+      </div>
+    </footer>
   </body>
 </html>
