@@ -2,8 +2,8 @@
 {% block content %}
 <div class="home-page">
   <div class="hero">
-    <h1>{{ SITENAME }}</h1>
-    <p>{{ SITE_SUBTITLE }}</p>
+    <h1>{{ SITENAME|striptags }}</h1>
+    <h4>{{ SITE_SUBTITLE }}</h4>
   </div>
 
   <div class="home-field">
@@ -12,19 +12,21 @@
         <div class="row">
           <div id="about-me" class="col-md-offset-3 col-md-6">
             <h4>about me</h4>
-            <p>{{ site.description }}</p>
+            {% if SITE_DESCRIPTION %}
+            <p>{{ SITE_DESCRIPTION|striptags }}</p>
+            {% endif %}
             <div class="social-icon-list">
             	{% if AUTHOR_TWITTER %}
-              <a title="Twitter" href="https://twitter.com/{{ AUTHOR_TWITTER }}"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+              <a title="Twitter" href="https://twitter.com/{{ AUTHOR_TWITTER }}"><img src="{{ SITEURL }}/theme/images/glyphicons_social_31_twitter.png"/></a>
               {% endif %}
               {% if AUTHOR_GITHUB %}
-              <a title="GitHub" href="https://github.com/{{ AUTHOR_GITHUB }}"><img src="/images/glyphicons_social_21_github.png"/></a>
+              <a title="GitHub" href="https://github.com/{{ AUTHOR_GITHUB }}"><img src="{{ SITEURL }}/theme/images/glyphicons_social_21_github.png"/></a>
               {% endif %}
               {% if AUTHOR_LINKEDIN %}
-              <a title="LinkedIn" href="https://linkedin.com/in/{{ AUTHOR_LINKEDIN }}"><img src="/images/glyphicons_social_17_linked_in.png"/></a>
+              <a title="LinkedIn" href="https://linkedin.com/in/{{ AUTHOR_LINKEDIN }}"><img src="{{ SITEURL }}/theme/images/glyphicons_social_17_linked_in.png"/></a>
               {% endif %}
               {% if AUTHOR_EMAIL %}
-              <a title="E-Mail" href="mailto:{{ AUTHOR_EMAIL }}"><img src="/images/glyphicons_social_39_e-mail.png"/></a>
+              <a title="E-Mail" href="mailto:{{ AUTHOR_EMAIL }}"><img src="{{ SITEURL }}/theme/images/glyphicons_social_39_e-mail.png"/></a>
               {% endif %}
             </div>
           </div>
@@ -34,23 +36,24 @@
 
     <div class="article-list">
       <div class="container">
-        {% for for article in articles_page.object_list %}
+        {% for article in articles_page.object_list %}
           <!-- CONTENT GOES HERE -->
           <div class="row">
             <div class="col-md-offset-3 col-md-6">
               <article>
                 <h2><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title|striptags }}</a></h2>
                 <p>
-                  {{ content | excerpt | markdownify }}
+                  {{ article.summary }}
                 </p>
                 <span class="meta">
-                  written {% include post/date.html %}
-                  {% include post/categories.html %}
+                  written <time datetime="{{ article.date.isoformat()  }}">{{ article.date|strftime('%B %d, %Y') }}</time>
+                  {% if article.tags %}
+                  in <span class="categories">
+                  {% for tag in article.tags %}
+                    <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag|lower }}</a>{% if not loop.last %},{% endif %}
+                  {% endfor %}
+                  {% endif %}
                 </span>
-
-                {% if excerpted == 'true' %}
-                  <a class="full-article-link pull-right" rel="full-article" href="{{ root_url }}{{ post.url }}">{{ site.excerpt_link }}</a>
-                {% endif %}
               </article>
             </div>
           </div>

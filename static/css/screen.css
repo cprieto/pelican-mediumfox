@@ -7658,7 +7658,7 @@ button.close {
   background-attachment: scroll;
   background-clip: border-box;
   background-color: #323232;
-  background-image: url("/images/background.jpg");
+  background-image: url("/theme/images/background.jpg");
   background-origin: padding-box;
   background-position: 0 0;
   background-repeat: repeat;
@@ -7666,7 +7666,7 @@ button.close {
   margin: 0px;
   padding: 200px 0px;
   z-index: -1;
-  height: 550px;
+  height: 600px;
   text-align: center;
   color: white;
 }
