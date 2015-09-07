@@ -36,7 +36,11 @@
 </head>
   <body>
     <a href="/" class="home-icon">
+      {% if SITE_IMAGE_URL %}
       <img src="{{ SITE_IMAGE_URL }}"/>
+      {% else %}
+      <img src="{{ SITEURL }}/theme/images/home.png"/>
+      {% endif %}
     </a>
     {% block content %}
     {% endblock content %}

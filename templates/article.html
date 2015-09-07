@@ -5,7 +5,7 @@
   <div class="container">
     <div class="row">
       <div class="col-md-8 col-md-offset-2">
-        <a href="{{ SITEURL }}/{{ article.url }}" rel="bookmark"><h1>{{ article.title }}</h1></a>
+        <h1>{{ article.title }}</h1>
         <div class="meta">
           written <time datetime="{{ article.date.isoformat()  }}">{{ article.date|strftime('%B %d, %Y') }}</time>
           {% if article.tags %}
@@ -19,10 +19,11 @@
         {{ article.content }}
         <hr class="divider-short"/>
         <!-- Disqus goes here -->
-        <section>
+        <!-- <section>
           <h1>Comments</h1>
           <div id="disqus_thread" aria-live="polite">Disqus goes here</div>
         </section>
+        -->
       </div>
     </div>
   </div>
