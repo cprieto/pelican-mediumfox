@@ -10,6 +10,7 @@
   <meta property="og:image" content="{{ article.facebookimage }}"/>
   {% endif %}
 {% endblock meta_block %}
+{% block canonical %}{{ SITEURL }}/{{ article.url }}{% endblock %}
 {% block content %}
 <article role="article" class="full-single-article">
   <div class="container">
