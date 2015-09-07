@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  {% block head %}
+  <meta charset="utf-8">
+  <title>{% block title %}{{ SITENAME }}{% endblock title %}</title>
+  <meta name="author" content="{{ AUTHOR }}">
+
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="canonical" href="{% block canonical %}{{ SITEURL }}{% endblock canonical %}">
+  <link href="{{ SITEURL }}/favicon.png" rel="icon">
+
+  {% if FEED_ALL_ATOM %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_ATOM }}" type="application/atom+xml" rel="alternate" title="{{ SITENAME }} Full Atom Feed" />
+  {% endif %}
+  {% if FEED_ALL_RSS %}
+  <link href="{{ FEED_DOMAIN }}/{{ FEED_ALL_RSS }}" type="application/rss+xml" rel="alternate" title="{{ SITENAME }} Full RSS Feed" />
+  {% endif %}
+
+  {% block styles %}
+  <link href="{{ SITEURL }}/theme/css/screen.css"  media="screen, projection" rel="stylesheet" type="text/css" />
+  {% endblock styles %}
+
+  {% block head_js %}
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/modernizr/2.8.3/modernizr.js"></script>
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  {% endblock head_js %}
+
+  {% endblock head %}
+</head>
