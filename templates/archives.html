@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% block title %}Archive for {{ SITEURL }}{% endblock %}
+{% block canonical %}{{ SITEURL }}/archives.html{% endblock %}
+{% block content %}
+<div class="all-posts">
+  <div class="container">
+    <div class="row">
+      <div class="list-title col-md-offset-3 col-md-6">
+        <h4>All post in {{ SITENAME }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-list">
+    <div class="container">
+      {% for article in articles %}
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6">
+            <article>
+              <h4><a href="{{ SITEURL }}/{{ article.url }}">{{ article.title }}</a></h4>
+              <span class="meta">
+                written <time datetime="{{ article.date.isoformat()  }}">{{ article.date|strftime('%B %d, %Y') }}</time>
+                {% if article.tags %}
+                in <span class="categories">
+                {% for tag in article.tags %}
+                  <a href="{{ SITEURL }}/{{ tag.url }}">{{ tag|lower }}</a>{% if not loop.last %},{% endif %}
+                {% endfor %}
+                {% endif %}
+              </span>
+            </article>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
