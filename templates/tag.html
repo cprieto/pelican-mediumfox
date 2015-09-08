@@ -1,4 +1,6 @@
 {% extends "base.html" %}
+{% block title %}Posts for {{ tag }}{% endblock %}
+{% block canonical %}{{ SITEURL }}/{{ tag.url }}{% endblock %}
 {% block content %}
 <div class="all-posts">
   <div class="container">
