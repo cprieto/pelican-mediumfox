@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+{% block title %}Tags for {{ SITEURL }}{% endblock %}
+{% block canonical %}{{ SITEURL }}/tags.html{% endblock %}
+{% block content %}
+<div class="all-posts">
+  <div class="container">
+    <div class="row">
+      <div class="list-title col-md-offset-3 col-md-6">
+        <h4>Tags for {{ SITENAME }}</h4>
+      </div>
+    </div>
+  </div>
+
+  <div class="article-list">
+    <div class="container">
+      {% for tag, articles in tags|sort %}
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6">
+            <h3><a href="{{ SITEURL }}/{{ tag.url }}">{{ tag }}</a> ({{ articles|count }})</h3>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+{% endblock content %}
